@@ -60,24 +60,24 @@ export default async function Page({ searchParams, params }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <Card className="w-[350px] p-0 overflow-hidden">
+      <Card className="w-[300px] p-0 overflow-hidden">
         <CardHeader className="p-0">
           <div className="relative">
             <Image
               className="mb-4"
               src={user.pfp.url}
               alt={params.username}
-              width={350}
-              height={350}
+              width={300}
+              height={300}
             />
           </div>
           <div className="px-6 pb-6 flex gap-2 flex-col">
-            <CardTitle className="m-0 p-0 flex flex-row items-center gap-2">
-              <div className="-ml-2">
+            <CardTitle className="m-0 p-0 flex flex-row items-center gap-3">
+              <div className="-ml-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="80"
-                  height="80"
+                  width="58"
+                  height="58"
                   viewBox="0 0 1000 1000"
                   fill="none"
                 >
@@ -104,14 +104,14 @@ export default async function Page({ searchParams, params }: Props) {
                 </span>
               </div>
             </CardTitle>
-            <CardDescription>
+            <CardDescription className="mt-2">
               {numberWithCommas(user.followerCount)} Followers ·{" "}
               {numberWithCommas(user.followingCount)} Following
             </CardDescription>
           </div>
         </CardHeader>
-        <CardContent>
-          <CardDescription className="text-lg text-slate-800">
+        <CardContent className="pt-0 mt-0">
+          <CardDescription className="text-lg text-slate-800 mt-0 pt-0">
             {user.profile.bio.text}
           </CardDescription>
         </CardContent>

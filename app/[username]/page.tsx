@@ -72,7 +72,7 @@ export default async function Page({ searchParams, params }: Props) {
             />
           </div>
           <div className="px-6 pb-6 flex gap-2 flex-col">
-            <CardTitle className="m-0 p-0 flex flex-row items-center gap-3">
+            <CardTitle className="m-0 p-0 flex flex-row items-start gap-4">
               <div className="-ml-1">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -95,13 +95,11 @@ export default async function Page({ searchParams, params }: Props) {
                     fill="white"
                   />
                 </svg>
+                <span className="opacity-20 ml-2 text-sm">#{user.fid}</span>
               </div>
               <div className="flex flex-col gap-2">
                 {user.displayName}
-                <span className="font-normal">
-                  @{params.username}{" "}
-                  <span className="opacity-20 ml-2">#{user.fid}</span>
-                </span>
+                <span className="font-normal">@{params.username}</span>
               </div>
             </CardTitle>
             <CardDescription className="mt-2">

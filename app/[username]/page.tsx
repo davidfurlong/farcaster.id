@@ -60,10 +60,10 @@ export default async function Page({ searchParams, params }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <Card className="w-[400px] p-0 overflow-hidden">
+      <Card className="sm:w-[400px] max-w-[400px] w-full p-0 overflow-hidden">
         <CardHeader className="p-4 pt-8 text-center flex flex-col items-center relative">
           <span className="opacity-20 ml-2 absolute left-4 top-5 text-xl">
-            #{user.fid}
+            #{numberWithCommas(user.fid)}
           </span>
           <span className="opacity-20 ml-2 text-sm absolute right-4 top-3">
             <a
@@ -83,8 +83,8 @@ export default async function Page({ searchParams, params }: Props) {
           />
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
-              <div className="flex flex-row gap-1 font-bold text-xl">
-                {user.displayName}
+              <div className="font-bold text-xl">
+                {user.displayName}{" "}
                 <span className="font-normal">@{params.username}</span>
               </div>
             </h1>
@@ -100,7 +100,7 @@ export default async function Page({ searchParams, params }: Props) {
           </CardDescription>
         </CardContent>
       </Card>
-      <div className="flex justify-around w-[400px] items-center my-6">
+      <div className="flex justify-around sm:w-[400px] w-full items-center my-6">
         <a
           href={`https://warpcast.com/${params.username}`}
           rel="noopener noreferer"

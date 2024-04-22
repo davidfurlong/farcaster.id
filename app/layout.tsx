@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} min-h-screen w-full bg-slate-50 p-4 flex flex-col items-center justify-center h-full`}
+        className={`${inter.className} min-h-screen w-full max-w-full bg-slate-50 p-4 flex flex-col items-center justify-center h-full`}
       >
         {children}
       </body>

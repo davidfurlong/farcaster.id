@@ -7,7 +7,7 @@ export default function RootLayout({
 }>) {
   return (
     <div>
-      <div className="pb-6 flex flex-row items-center gap-3 w-[400px]">
+      <div className="pb-6 flex flex-row items-center gap-3 sm:w-[400px] w-full max-w-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="32"

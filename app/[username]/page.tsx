@@ -2,14 +2,13 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { ExternalLink } from "lucide-react";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { username: string };
@@ -21,6 +20,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const user = await fetchUser(params.username);
+
+  if (!user) return {};
 
   return {
     title: `${user.displayName} (@${params.username}) on Farcaster`,
@@ -41,22 +42,22 @@ async function fetchUser(username: string) {
     headers: { accept: "application/json", api_key: process.env.NEYNAR_API! },
   };
 
-  const {
-    result: { user },
-  } = await fetch(
+  const result = await fetch(
     `https://api.neynar.com/v1/farcaster/user-by-username?username=${username}&viewerFid=3`,
     options
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  return user;
+  return result?.result?.user;
 }
 
 export default async function Page({ searchParams, params }: Props) {
   if (!params.username) throw new Error("");
 
   const user = await fetchUser(params.username);
+
+  if (!user) return notFound();
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">

@@ -114,7 +114,7 @@ export default async function Page({ searchParams, params }: Props) {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <g clip-path="url(#clip0_1_2)">
+            <g clipPath="url(#clip0_1_2)">
               <path
                 d="M947.747 1259.61H311.861C139.901 1259.61 0 1119.72 0 947.752V311.871C0 139.907 139.901 0.00541362 311.861 0.00541362H947.747C1119.71 0.00541362 1259.61 139.907 1259.61 311.871V947.752C1259.61 1119.72 1119.71 1259.61 947.747 1259.61Z"
                 fill="#472A91"
@@ -188,9 +188,9 @@ export default async function Page({ searchParams, params }: Props) {
               <path fill="#fff" d="M18.7 27.54h-2.67v2.63h2.68v-2.63z"></path>
               <path
                 fill="#fff"
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M10.69 32.8v2.63H8.02v10.51h2.67v2.63h10.69v-2.63h2.67V35.43h-2.67V32.8zm0 5.26h2.67v5.25H10.7v-5.25zm10.69 5.25v-5.25H18.7v5.25h2.67z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               ></path>
             </g>
           </svg>

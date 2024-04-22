@@ -75,7 +75,7 @@ export default async function Page({ searchParams, params }: Props) {
             </a>
           </span>
           <Image
-            className="rounded-full border"
+            className="rounded-full border object-cover"
             src={user.pfp.url}
             alt={params.username}
             width={128}

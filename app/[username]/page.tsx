@@ -74,13 +74,18 @@ export default async function Page({ searchParams, params }: Props) {
               <ExternalLink />
             </a>
           </span>
-          <Image
-            className="rounded-full border object-cover"
-            src={user.pfp.url}
-            alt={params.username}
-            width={128}
-            height={128}
-          />
+          <div className="w-[128px] h-[128px] relative">
+            <Image
+              className="rounded-full border"
+              fill
+              style={{
+                objectFit: "cover",
+              }}
+              sizes="(max-width: 768px) 128px, 128px"
+              src={user.pfp.url}
+              alt={params.username}
+            />
+          </div>
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
               <div className="font-bold text-xl">

@@ -43,7 +43,7 @@ async function fetchUser(username: string) {
   };
 
   const result = await fetch(
-    `https://api.neynar.com/v1/farcaster/user-by-username?username=${username}&viewerFid=3`,
+    `https://api.neynar.com/v1/farcaster/user-by-username?username=${username.toLowerCase()}&viewerFid=3`,
     options
   )
     .then((response) => response.json())

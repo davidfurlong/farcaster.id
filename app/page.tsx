@@ -1,9 +1,10 @@
+import { CreateChannel } from "./create-channel";
 import { CreatePage } from "./create-page";
 
 export default function Home() {
   return (
     <main className="flex flex-row items-center justify-between p-24">
-      <div className="flex flex-col">
+      <div className="flex flex-col gap-4">
         <div className="pb-6 flex flex-row items-center gap-3 w-[400px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -28,10 +29,13 @@ export default function Home() {
           </svg>
           <span className="font-bold text-xl">farcaster.id</span>
         </div>
-        <span>Create and share your own Farcaster.id page</span>
+        <span className="font-bold">
+          Create and share your own Farcaster.id page
+        </span>
+        <span>Profiles</span>
         <a
           href="https://farcaster.id/dwr"
-          className="group rounded-lg border border-transparent mt-4 px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -39,7 +43,7 @@ export default function Home() {
         </a>
         <a
           href="https://farcaster.id/vitalik.eth"
-          className="group rounded-lg border border-transparent mt-4 px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -47,13 +51,39 @@ export default function Home() {
         </a>
         <a
           href="https://farcaster.id/df"
-          className="group rounded-lg border border-transparent mt-4 px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
           https://farcaster.id/df
         </a>
         <CreatePage />
+        <span>Channels</span>
+        <a
+          href="https://farcaster.id/channel/product"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://farcaster.id/channel/product
+        </a>
+        <a
+          href="https://farcaster.id/channel/memes"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://farcaster.id/channel/memes
+        </a>
+        <a
+          href="https://farcaster.id/channel/degen"
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://farcaster.id/channel/degen
+        </a>
+        <CreateChannel />
       </div>
     </main>
   );

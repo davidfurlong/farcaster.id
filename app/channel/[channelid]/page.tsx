@@ -2,6 +2,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
 } from "@/components/ui/card";
 import Image from "next/image";
@@ -9,12 +10,12 @@ import React from "react";
 import type { Metadata, ResolvingMetadata } from "next";
 import { ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
-import { numberWithCommas } from "@/lib/utils";
+import { fromNow, numberWithCommas } from "@/lib/utils";
 
 export const revalidate = 3600; // revalidate at most every hour
 
 type Props = {
-  params: { username: string };
+  params: { channelid: string };
   searchParams: { [key: string]: string | string[] | undefined };
 };
 
@@ -22,52 +23,52 @@ export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const user = await fetchUser(params.username);
+  const channel = await fetchChannel(params.channelid);
 
-  if (!user) return {};
+  if (!channel) return {};
 
   return {
-    title: `${user.displayName} (@${params.username}) on Farcaster`,
-    description: user.profile.bio.text,
+    title: `${channel.name} (/${params.channelid}) on Farcaster`,
+    description: channel.description,
     openGraph: {
-      images: [user.pfp.url],
+      images: [channel.image_url],
     },
   };
 }
 
-async function fetchUser(username: string) {
+async function fetchChannel(channelid: string) {
   const options = {
     method: "GET",
     headers: { accept: "application/json", api_key: process.env.NEYNAR_API! },
   };
 
   const result = await fetch(
-    `https://api.neynar.com/v1/farcaster/user-by-username?username=${username.toLowerCase()}&viewerFid=3`,
+    `https://api.neynar.com/v2/farcaster/channel?id=${channelid.toLowerCase()}&viewerFid=3`,
     options
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  return result?.result?.user;
+  return result?.channel;
 }
 
 export default async function Page({ searchParams, params }: Props) {
-  if (!params.username) throw new Error("");
+  if (!params.channelid) throw new Error("");
 
-  const user = await fetchUser(params.username);
+  const channel = await fetchChannel(params.channelid);
 
-  if (!user) return notFound();
+  if (!channel) return notFound();
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
       <Card className="sm:w-[400px] max-w-[400px] w-full p-0 overflow-hidden">
         <CardHeader className="p-4 pt-8 text-center flex flex-col items-center relative">
           <span className="opacity-20 ml-2 absolute left-4 top-5 text-xl">
-            #{numberWithCommas(user.fid)}
+            {fromNow(new Date(channel.created_at * 1000))}
           </span>
           <span className="opacity-20 ml-2 text-sm absolute right-4 top-3">
             <a
-              href={`https://warpcast.com/${user.username}`}
+              href={`https://warpcast.com/~/channel/${channel.id}`}
               rel="noopener noreferer"
               target="_blank"
             >
@@ -76,38 +77,85 @@ export default async function Page({ searchParams, params }: Props) {
           </span>
           <div className="w-[128px] h-[128px] relative">
             <Image
-              className="rounded-full border"
+              className="rounded border"
               fill
               style={{
                 objectFit: "cover",
               }}
               sizes="(max-width: 768px) 128px, 128px"
-              src={user.pfp.url}
-              alt={params.username}
+              src={channel.image_url}
+              alt={params.channelid}
             />
           </div>
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
               <div className="font-bold text-xl">
-                {user.displayName}{" "}
-                <span className="font-normal">@{params.username}</span>
+                {channel.name}{" "}
+                <span className="font-normal">/{params.channelid}</span>
               </div>
             </h1>
             <div className="text-slate-500">
-              {numberWithCommas(user.followerCount)} Followers ·{" "}
-              {numberWithCommas(user.followingCount)} Following
+              {numberWithCommas(channel.follower_count)} Followers
             </div>
           </div>
         </CardHeader>
         <CardContent className="pt-6 mt-0 border-t border-dashed">
           <CardDescription className="text-lg text-slate-800 mt-0 pt-0">
-            {user.profile.bio.text}
+            {channel.description}
           </CardDescription>
         </CardContent>
+        <CardFooter>
+          <div className="flex flex-col gap-3 items-start">
+            <h3 className="uppercase text-slate-400 text-sm">Hosted by</h3>
+            {channel.hosts?.map((host: any) => {
+              return (
+                <a
+                  key={host.username}
+                  href={`https://farcaster.id/${host.username}`}
+                  target="_blank"
+                  rel="noreferer noopener"
+                >
+                  <div className="cursor-pointer flex flex-row gap-2 items-center">
+                    <div
+                      className="w-[36px] h-[36px] flex-shrink-0"
+                      key={host.fid}
+                    >
+                      <div className="w-[36px] h-[36px] absolute">
+                        <Image
+                          className="rounded-full"
+                          src={
+                            host.pfp_url ||
+                            "https://wrpcd.net/cdn-cgi/image/fit=contain,f=auto,w=144/https%3A%2F%2Fwarpcast.com%2Favatar.png"
+                          }
+                          sizes="(max-width: 768px) 36px, 36px"
+                          quality={75}
+                          alt={host.fid}
+                          fill
+                          style={{
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-slate-600 text-sm">
+                        <span className="font-bold">{host.display_name}</span> @
+                        {host.username}
+                      </div>
+                      {/* <div className="text-slate-400 text-sm">
+                        {numberWithCommas(host.follower_count)} Followers
+                      </div> */}
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </CardFooter>
       </Card>
       <div className="flex justify-around sm:w-[400px] w-full items-center my-6">
         <a
-          href={`https://warpcast.com/${params.username}`}
+          href={`https://warpcast.com/~/channel/${params.channelid}`}
           rel="noopener noreferer"
           className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -137,7 +185,7 @@ export default async function Page({ searchParams, params }: Props) {
           </svg>
         </a>
         <a
-          href={`https://www.supercast.xyz/${params.username}`}
+          href={`https://www.supercast.xyz/channel/${params.channelid}`}
           rel="noopener noreferer"
           className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -149,8 +197,22 @@ export default async function Page({ searchParams, params }: Props) {
             alt="supercast"
           />
         </a>
+        <a
+          href={`https://www.nook.social/channel/${params.channelid}`}
+          rel="noopener noreferer"
+          className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          target="_blank"
+        >
+          <Image
+            src="https://i.imgur.com/t0kK8LT.jpg"
+            width="32"
+            className="rounded-lg"
+            height="32"
+            alt="nook"
+          />
+        </a>
         {/* <a
-            href={`https://www.herocast.xyz/${params.username}`}
+            href={`https://www.herocast.xyz/${params.channelid}`}
             rel="noopener noreferer"
             className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"
@@ -163,8 +225,8 @@ export default async function Page({ searchParams, params }: Props) {
             />
           </a> */}
         {/*  */}
-        <a
-          href={`https://firefly.mask.social/profile/${user.fid}?source=farcaster`}
+        {/* <a
+          href={`https://firefly.mask.social/profile/${FIXME}?source=farcaster`}
           rel="noopener noreferer"
           className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -199,37 +261,21 @@ export default async function Page({ searchParams, params }: Props) {
               ></path>
             </g>
           </svg>
-        </a>
-        {user.verifiedAddresses.eth_addresses.length ? (
-          <a
-            href={`https://app.yup.io/account/${user.verifiedAddresses.eth_addresses[0]}`}
-            rel="noopener noreferer"
-            className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-            target="_blank"
-          >
-            <Image
-              src="https://avatars.githubusercontent.com/u/57748591?s=200&v=4"
-              width="40"
-              height="40"
-              className="rounded-lg"
-              alt="yup"
-            />
-          </a>
-        ) : null}
-        <a
-          href={`https://www.nook.social/users/${params.username}`}
+        </a> */}
+        {/* <a
+          href={`https://app.yup.io/account/${FIXME}`}
           rel="noopener noreferer"
-          className="opacity-30 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <Image
-            src="https://i.imgur.com/t0kK8LT.jpg"
-            width="32"
-            height="32"
+            src="https://avatars.githubusercontent.com/u/57748591?s=200&v=4"
+            width="40"
+            height="40"
             className="rounded-lg"
-            alt="nook"
+            alt="yup"
           />
-        </a>
+        </a> */}
       </div>
     </div>
   );

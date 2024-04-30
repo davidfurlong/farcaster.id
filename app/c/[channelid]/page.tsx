@@ -198,7 +198,7 @@ export default async function Page({ searchParams, params }: Props) {
           />
         </a>
         <a
-          href={`https://www.nook.social/channel/${params.channelid}`}
+          href={`https://www.nook.social/channels/${params.channelid}`}
           rel="noopener noreferer"
           className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"

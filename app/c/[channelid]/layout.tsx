@@ -32,7 +32,7 @@ export default function RootLayout({
           />
         </svg>
         <span className="font-bold text-xl">
-          <Link href="/">farcaster.id/channel/{params.channelid}</Link>
+          <Link href="/">farcaster.id/c/{params.channelid}</Link>
         </span>
       </span>
       {children}

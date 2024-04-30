@@ -59,7 +59,7 @@ export const farapps: Record<string, RegistryEntry> = {
     channel: ({ id }) => `https://warpcast.com/~/channel/${id}`,
     cast: ({ username, hash }) => `https://warpcast.com/${username}/${hash}`,
     // compose: ({ text, embeds }) =>
-    // `https://warpcast.com/~/compose?text=${text}&embeds%5B%5D=${FIXME}`,
+    // `https://warpcast.com/~/compose?text=${text}&embeds[]=${FIXME}`,
   },
   supercast: {
     logo: "",

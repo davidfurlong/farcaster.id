@@ -60,28 +60,28 @@ export default function Home() {
         <CreatePage />
         <span>Channels</span>
         <a
-          href="https://farcaster.id/channel/product"
+          href="https://farcaster.id/c/product"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/channel/product
+          https://farcaster.id/c/product
         </a>
         <a
-          href="https://farcaster.id/channel/memes"
+          href="https://farcaster.id/c/memes"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/channel/memes
+          https://farcaster.id/c/memes
         </a>
         <a
-          href="https://farcaster.id/channel/degen"
+          href="https://farcaster.id/c/degen"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/channel/degen
+          https://farcaster.id/c/degen
         </a>
         <CreateChannel />
       </div>

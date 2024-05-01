@@ -1,14 +1,11 @@
+import { baseUrl } from "@/lib/config";
 import { Channels } from "@/lib/db";
 import { numberWithCommas } from "@/lib/utils";
 import Image from "next/image";
 
 export async function HostingChannels({ username }: { username: string }) {
   const { channels }: { channels: Channels[] } = await fetch(
-    `${
-      process.env.NODE_ENV === "development"
-        ? "http://localhost:3000"
-        : "https://farcaster.id"
-    }/${username}/hosting`,
+    `${baseUrl}/${username}/hosting`,
     {
       method: "GET",
       headers: {
@@ -58,7 +55,7 @@ export async function HostingChannels({ username }: { username: string }) {
                       <span className="font-normal">/{channel.id}</span>
                     </div>
                   </h1>
-                  <div className="text-slate-500  text-sm">
+                  <div className="text-slate-500 text-sm">
                     {numberWithCommas(channel.follower_count)} Followers
                   </div>
                 </div>

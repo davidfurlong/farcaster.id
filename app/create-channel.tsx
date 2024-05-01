@@ -8,7 +8,7 @@ export function CreateChannel() {
   const [handle, setHandle] = useState("");
   const router = useRouter();
   return (
-    <span className="group rounded-lg border border-transparent px-5 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+    <span className="group rounded-lg border border-transparent px-5 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
       farcaster.id/c/
       <input
         value={handle}

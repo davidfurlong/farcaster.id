@@ -1,3 +1,4 @@
+import { baseUrl } from "@/lib/config";
 import { CreateChannel } from "./create-channel";
 import { CreatePage } from "./create-page";
 
@@ -5,7 +6,7 @@ export default function Home() {
   return (
     <main className="flex flex-row items-center justify-between p-24">
       <div className="flex flex-col gap-4">
-        <div className="pb-6 flex flex-row items-center gap-3 w-[400px]">
+        <div className="pb-6 flex flex-row items-center gap-3 w-[330px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="32"
@@ -34,24 +35,24 @@ export default function Home() {
         </span>
         <span>Profiles</span>
         <a
-          href="https://farcaster.id/dwr"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/dwr`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
           farcaster.id/dwr
         </a>
         <a
-          href="https://farcaster.id/vitalik.eth"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/vitalik.eth`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
           farcaster.id/vitalik.eth
         </a>
         <a
-          href="https://farcaster.id/df"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/df`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -60,24 +61,24 @@ export default function Home() {
         <CreatePage />
         <span>Channels</span>
         <a
-          href="https://farcaster.id/c/product"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/c/product`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
           farcaster.id/c/product
         </a>
         <a
-          href="https://farcaster.id/c/memes"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/c/memes`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >
           farcaster.id/c/memes
         </a>
         <a
-          href="https://farcaster.id/c/degen"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+          href={`${baseUrl}/c/degen`}
+          className="group rounded-lg border border-transparent px-5 py-4 transition-colors bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300 hover:bg-slate-100 dark:hover:border-slate-600 dark:hover:bg-slate-800 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
         >

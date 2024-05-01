@@ -61,7 +61,7 @@ export default async function Page({ searchParams, params }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
-      <Card className="sm:w-[400px] max-w-[400px] w-full p-0 overflow-hidden">
+      <Card className="sm:w-[400px] max-w-[400px] w-full p-0 overflow-hidden bg-white dark:bg-slate-900 text-black dark:text-white dark:border-slate-700">
         <CardHeader className="p-4 pt-8 text-center flex flex-col items-center relative">
           <span className="opacity-20 ml-2 absolute left-4 top-5 text-xl">
             #{numberWithCommas(user.fid)}
@@ -100,8 +100,8 @@ export default async function Page({ searchParams, params }: Props) {
             </div>
           </div>
         </CardHeader>
-        <CardContent className="pt-6 mt-0 border-t border-dashed">
-          <CardDescription className="text-lg text-slate-800 mt-0 pt-0">
+        <CardContent className="pt-6 mt-0 border-t border-dashed dark:border-slate-700">
+          <CardDescription className="text-lg text-slate-800 dark:text-slate-200 mt-0 pt-0">
             {user.profile.bio.text}
           </CardDescription>
           <HostingChannels username={user.username} />
@@ -111,7 +111,7 @@ export default async function Page({ searchParams, params }: Props) {
         <a
           href={`https://warpcast.com/${params.username}`}
           rel="noopener noreferer"
-          className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <svg
@@ -141,7 +141,7 @@ export default async function Page({ searchParams, params }: Props) {
         <a
           href={`https://www.supercast.xyz/${params.username}`}
           rel="noopener noreferer"
-          className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <Image
@@ -154,7 +154,7 @@ export default async function Page({ searchParams, params }: Props) {
         {/* <a
             href={`https://www.herocast.xyz/${params.username}`}
             rel="noopener noreferer"
-            className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+            className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"
           >
             <Image
@@ -168,7 +168,7 @@ export default async function Page({ searchParams, params }: Props) {
         <a
           href={`https://firefly.mask.social/profile/${user.fid}?source=farcaster`}
           rel="noopener noreferer"
-          className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <svg
@@ -206,7 +206,7 @@ export default async function Page({ searchParams, params }: Props) {
           <a
             href={`https://app.yup.io/account/${user.verifiedAddresses.eth_addresses[0]}`}
             rel="noopener noreferer"
-            className="opacity-30 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+            className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"
           >
             <Image
@@ -221,7 +221,7 @@ export default async function Page({ searchParams, params }: Props) {
         <a
           href={`https://www.nook.social/users/${params.username}`}
           rel="noopener noreferer"
-          className="opacity-30 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          className="opacity-30 dark:opacity-70 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <Image

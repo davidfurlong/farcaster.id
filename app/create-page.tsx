@@ -9,7 +9,7 @@ export function CreatePage() {
   const router = useRouter();
   return (
     <span className="group rounded-lg border border-transparent px-5 transition-colors bg-white border-slate-200 hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
-      https://farcaster.id/
+      farcaster.id/
       <input
         value={handle}
         onChange={(event) => {

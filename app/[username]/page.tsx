@@ -10,6 +10,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { ExternalLink } from "lucide-react";
 import { notFound } from "next/navigation";
 import { numberWithCommas } from "@/lib/utils";
+import { HostingChannels } from "./hosting-channels";
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -103,6 +104,7 @@ export default async function Page({ searchParams, params }: Props) {
           <CardDescription className="text-lg text-slate-800 mt-0 pt-0">
             {user.profile.bio.text}
           </CardDescription>
+          <HostingChannels username={user.username} />
         </CardContent>
       </Card>
       <div className="flex justify-around sm:w-[400px] w-full items-center my-6">

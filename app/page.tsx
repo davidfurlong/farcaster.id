@@ -39,7 +39,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/dwr
+          farcaster.id/dwr
         </a>
         <a
           href="https://farcaster.id/vitalik.eth"
@@ -47,7 +47,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/vitalik.eth
+          farcaster.id/vitalik.eth
         </a>
         <a
           href="https://farcaster.id/df"
@@ -55,7 +55,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/df
+          farcaster.id/df
         </a>
         <CreatePage />
         <span>Channels</span>
@@ -65,7 +65,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/c/product
+          farcaster.id/c/product
         </a>
         <a
           href="https://farcaster.id/c/memes"
@@ -73,7 +73,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/c/memes
+          farcaster.id/c/memes
         </a>
         <a
           href="https://farcaster.id/c/degen"
@@ -81,7 +81,7 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          https://farcaster.id/c/degen
+          farcaster.id/c/degen
         </a>
         <CreateChannel />
       </div>

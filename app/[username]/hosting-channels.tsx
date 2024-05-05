@@ -1,10 +1,11 @@
 import { baseUrl } from "@/lib/config";
 import { Channels } from "@/lib/db";
+import { SerializedChannels } from "@/lib/types";
 import { numberWithCommas } from "@/lib/utils";
 import Image from "next/image";
 
 export async function HostingChannels({ username }: { username: string }) {
-  const { channels }: { channels: Channels[] } = await fetch(
+  const { channels }: { channels: SerializedChannels[] } = await fetch(
     `${baseUrl}/${username}/hosting`,
     {
       method: "GET",

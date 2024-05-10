@@ -12,15 +12,6 @@ import { notFound } from "next/navigation";
 import { numberWithCommas } from "@/lib/utils";
 import { HostingChannels } from "./hosting-channels";
 import { RichText } from "@/components/rich-text";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -368,6 +359,20 @@ export default async function Page({ searchParams, params }: Props) {
         >
           <Image
             src="https://i.imgur.com/t0kK8LT.jpg"
+            width="32"
+            height="32"
+            className="rounded-lg"
+            alt="nook"
+          />
+        </a>
+        <a
+          href={`https://buttrfly.app/profile/fc:${params.username}`}
+          rel="noopener noreferer"
+          className="opacity-30 dark:opacity-70 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
+          target="_blank"
+        >
+          <Image
+            src="https://buttrfly.app/buttrfly-icon-rounded.png"
             width="32"
             height="32"
             className="rounded-lg"

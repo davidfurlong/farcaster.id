@@ -1,5 +1,4 @@
 import { baseUrl } from "@/lib/config";
-import { Channels } from "@/lib/db";
 import { SerializedChannels } from "@/lib/types";
 import { numberWithCommas } from "@/lib/utils";
 import Image from "next/image";

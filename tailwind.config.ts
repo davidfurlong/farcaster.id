@@ -1,13 +1,17 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+    "./app/*.{ts,tsx,js,css}",
+    "./app/**/*.{ts,tsx,js,css}",
+    "./node_modules/@frames.js/render/dist/*.{ts,tsx,js,css}",
+    "./node_modules/@frames.js/render/dist/**/*.{ts,tsx,js,css}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -75,6 +79,6 @@ const config = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

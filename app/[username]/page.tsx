@@ -12,6 +12,7 @@ import { notFound } from "next/navigation";
 import { numberWithCommas } from "@/lib/utils";
 import { HostingChannels } from "./hosting-channels";
 import { RichText } from "@/components/rich-text";
+import { PinnedFrames } from "./pinned-frames";
 
 export const revalidate = 3600; // revalidate at most every hour
 
@@ -380,6 +381,7 @@ export default async function Page({ searchParams, params }: Props) {
           />
         </a>
       </div>
+      <PinnedFrames username={params.username} />
     </div>
   );
 }

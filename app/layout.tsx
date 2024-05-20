@@ -18,19 +18,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <body
-          className={`${inter.className} text-black dark:text-white min-h-screen w-full max-w-full bg-slate-50 dark:bg-slate-950 p-4 flex flex-col items-center justify-center h-full`}
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen w-full max-w-full`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          {children}
-        </body>
-      </ThemeProvider>
+          <div className="text-black dark:text-white min-h-screen w-full max-w-full bg-slate-50 dark:bg-slate-950 p-4 flex flex-col items-center justify-center h-full">
+            {children}
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

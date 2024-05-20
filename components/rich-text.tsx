@@ -10,6 +10,7 @@ import {
   StructuredCastUrl,
   StructuredCastVideo,
 } from "@/lib/structure-cast";
+import { ReactElement } from "react";
 
 export const structuredCastToReactDOMComponentsConfig: Record<
   StructuredCastUnit["type"],
@@ -102,10 +103,12 @@ export function convertStructuredCastToReactDOMComponents(
   );
 }
 
-export function RichText({ text }: { text: string }) {
+export function RichText({ text }: { text: string }): ReactElement<any, any> {
   let structuredCast = convertCastPlainTextToStructured({
     text: text,
   });
 
-  return convertStructuredCastToReactDOMComponents(structuredCast, {});
+  return (
+    <div>{convertStructuredCastToReactDOMComponents(structuredCast, {})}</div>
+  );
 }

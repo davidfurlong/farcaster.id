@@ -1,8 +1,7 @@
-@import "tailwindcss/base";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/components";
-
-@import "tailwindcss/utilities";
     :root {
       --background: 0 0% 100%;
       --foreground: 222.2 84% 4.9%;

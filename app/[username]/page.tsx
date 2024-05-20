@@ -14,6 +14,8 @@ import { HostingChannels } from "./hosting-channels";
 import { RichText } from "@/components/rich-text";
 import { PinnedFrames } from "./pinned-frames";
 
+export const dynamic = "force-dynamic";
+
 export const revalidate = 3600; // revalidate at most every hour
 
 type Props = {

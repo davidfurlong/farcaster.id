@@ -57,7 +57,7 @@ async function fetchUser(username: string) {
 }
 
 export default async function Page({ searchParams, params }: Props) {
-  if (!params.username) throw new Error("");
+  if (!params.username) throw new Error("no username specified");
 
   const user = await fetchUser(params.username);
 

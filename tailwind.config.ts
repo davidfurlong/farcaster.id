@@ -7,8 +7,6 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./app/*.{ts,tsx,js,css}",
-    "./app/**/*.{ts,tsx,js,css}",
     "./node_modules/@frames.js/render/dist/*.{ts,tsx,js,css}",
     "./node_modules/@frames.js/render/dist/**/*.{ts,tsx,js,css}",
   ],

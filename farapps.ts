@@ -72,17 +72,6 @@ export const farapps: Record<string, RegistryEntry> = {
     cast: () => "",
     compose: () => "",
   },
-  nook: {
-    logo: "",
-    icon: "",
-    description: "",
-    authorFids: [],
-    url: "https://nook.social",
-    user: ({ username }) => null,
-    channel: ({ id }) => null,
-    cast: () => "",
-    compose: () => "",
-  },
   herocast: {
     logo: "",
     icon: "",

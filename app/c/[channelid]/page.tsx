@@ -198,20 +198,6 @@ export default async function Page({ searchParams, params }: Props) {
           />
         </a>
         <a
-          href={`https://www.nook.social/channels/${params.channelid}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://i.imgur.com/t0kK8LT.jpg"
-            width="32"
-            className="rounded-lg"
-            height="32"
-            alt="nook"
-          />
-        </a>
-        <a
           href={`https://buttrfly.app/channel/fc:${params.channelid}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
@@ -222,7 +208,7 @@ export default async function Page({ searchParams, params }: Props) {
             width="32"
             className="rounded-lg"
             height="32"
-            alt="nook"
+            alt="buttrfly"
           />
         </a>
         {/* <a

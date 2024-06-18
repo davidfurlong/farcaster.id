@@ -191,20 +191,6 @@ export default async function Page({ searchParams, params }: Props) {
                           />
                         </a>
                       ) : null}
-                      <a
-                        href={`https://www.nook.social/users/${params.username}`}
-                        rel="noopener noreferer"
-                        className="rounded hover:scale-110 hover:animate-in"
-                        target="_blank"
-                      >
-                        <Image
-                          src="https://i.imgur.com/t0kK8LT.jpg"
-                          width="32"
-                          height="32"
-                          className="rounded-lg"
-                          alt="nook"
-                        />
-                      </a>
                     </div>
                   </DialogDescription>
                 </DialogHeader>
@@ -355,20 +341,6 @@ export default async function Page({ searchParams, params }: Props) {
           </a>
         ) : null}
         <a
-          href={`https://www.nook.social/users/${params.username}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://i.imgur.com/t0kK8LT.jpg"
-            width="32"
-            height="32"
-            className="rounded-lg"
-            alt="nook"
-          />
-        </a>
-        <a
           href={`https://buttrfly.app/profile/fc:${params.username}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
@@ -379,7 +351,7 @@ export default async function Page({ searchParams, params }: Props) {
             width="32"
             height="32"
             className="rounded-lg"
-            alt="nook"
+            alt="buttrfly"
           />
         </a>
       </div>

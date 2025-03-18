@@ -32,10 +32,10 @@ export async function generateMetadata(
   if (!user) return {};
 
   return {
-    title: `${user.displayName} (@${params.username}) on Farcaster`,
+    title: `${user.display_name} (@${params.username}) on Farcaster`,
     description: user.profile.bio.text,
     openGraph: {
-      images: [user.pfp.url],
+      images: [user.pfp_url],
     },
   };
 }
@@ -47,13 +47,13 @@ async function fetchUser(username: string) {
   };
 
   const result = await fetch(
-    `https://api.neynar.com/v1/farcaster/user-by-username?username=${username.toLowerCase()}&viewerFid=3`,
+    `https://api.neynar.com/v2/farcaster/user/by_username?username=${username.toLowerCase()}`,
     options
   )
     .then((response) => response.json())
     .catch((err) => console.error(err));
 
-  return result?.result?.user;
+  return result?.user;
 }
 
 export default async function Page({ searchParams, params }: Props) {
@@ -175,9 +175,9 @@ export default async function Page({ searchParams, params }: Props) {
                           </g>
                         </svg>
                       </a>
-                      {user.verifiedAddresses.eth_addresses.length ? (
+                      {user.verified_addresses.eth_addresses.length ? (
                         <a
-                          href={`https://app.yup.io/account/${user.verifiedAddresses.eth_addresses[0]}`}
+                          href={`https://app.yup.io/account/${user.verified_addresses.eth_addresses[0]}`}
                           rel="noopener noreferer"
                           className="hover:scale-110 hover:animate-in"
                           target="_blank"
@@ -205,20 +205,20 @@ export default async function Page({ searchParams, params }: Props) {
                 objectFit: "cover",
               }}
               sizes="(max-width: 768px) 128px, 128px"
-              src={user.pfp.url}
+              src={user.pfp_url}
               alt={params.username}
             />
           </div>
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
               <div className="font-bold text-xl">
-                {user.displayName}{" "}
+                {user.display_name}{" "}
                 <span className="font-normal">@{params.username}</span>
               </div>
             </h1>
             <div className="text-slate-500">
-              {numberWithCommas(user.followerCount)} Followers ·{" "}
-              {numberWithCommas(user.followingCount)} Following
+              {numberWithCommas(user.follower_count)} Followers ·{" "}
+              {numberWithCommas(user.following_count)} Following
             </div>
           </div>
         </CardHeader>
@@ -324,9 +324,9 @@ export default async function Page({ searchParams, params }: Props) {
             </g>
           </svg>
         </a>
-        {user.verifiedAddresses.eth_addresses.length ? (
+        {user.verified_addresses.eth_addresses.length ? (
           <a
-            href={`https://app.yup.io/account/${user.verifiedAddresses.eth_addresses[0]}`}
+            href={`https://app.yup.io/account/${user.verified_addresses.eth_addresses[0]}`}
             rel="noopener noreferer"
             className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"

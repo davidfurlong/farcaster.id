@@ -261,13 +261,13 @@ export default async function Page({ searchParams, params }: Props) {
           </svg>
         </a>
         <a
-          href={`https://www.supercast.xyz/${params.username}`}
+          href={`https://www.super.sc/${params.username}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <Image
-            src="https://www.supercast.xyz/supercast-logo-black.png"
+            src="https://www.super.sc/supercast-logo-black.png"
             width="32"
             height="32"
             alt="supercast"
@@ -323,37 +323,7 @@ export default async function Page({ searchParams, params }: Props) {
               ></path>
             </g>
           </svg>
-        </a>
-        {user.verified_addresses.eth_addresses.length ? (
-          <a
-            href={`https://app.yup.io/account/${user.verified_addresses.eth_addresses[0]}`}
-            rel="noopener noreferer"
-            className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-            target="_blank"
-          >
-            <Image
-              src="https://avatars.githubusercontent.com/u/57748591?s=200&v=4"
-              width="40"
-              height="40"
-              className="rounded-lg"
-              alt="yup"
-            />
-          </a>
-        ) : null}
-        <a
-          href={`https://buttrfly.app/profile/fc:${params.username}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 rounded grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://buttrfly.app/buttrfly-icon-rounded.png"
-            width="32"
-            height="32"
-            className="rounded-lg"
-            alt="buttrfly"
-          />
-        </a>
+        </a> 
       </div>
       <PinnedFrames username={params.username} />
     </div>

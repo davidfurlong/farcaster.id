@@ -185,32 +185,19 @@ export default async function Page({ searchParams, params }: Props) {
           </svg>
         </a>
         <a
-          href={`https://www.supercast.xyz/channel/${params.channelid}`}
+          href={`https://www.super.sc/channel/${params.channelid}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
         >
           <Image
-            src="https://www.supercast.xyz/supercast-logo-black.png"
+            src="https://www.super.sc/supercast-logo-black.png"
             width="32"
             height="32"
             alt="supercast"
           />
         </a>
-        <a
-          href={`https://buttrfly.app/channel/fc:${params.channelid}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://buttrfly.app/buttrfly-icon-rounded.png"
-            width="32"
-            className="rounded-lg"
-            height="32"
-            alt="buttrfly"
-          />
-        </a>
+        
         {/* <a
             href={`https://www.herocast.xyz/${params.channelid}`}
             rel="noopener noreferer"

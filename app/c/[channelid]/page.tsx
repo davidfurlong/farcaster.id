@@ -183,21 +183,7 @@ export default async function Page({ searchParams, params }: Props) {
               </clipPath>
             </defs>
           </svg>
-        </a>
-        <a
-          href={`https://www.super.sc/channel/${params.channelid}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://www.super.sc/supercast-logo-black.png"
-            width="32"
-            height="32"
-            alt="supercast"
-          />
-        </a>
-        
+        </a>  
         {/* <a
             href={`https://www.herocast.xyz/${params.channelid}`}
             rel="noopener noreferer"

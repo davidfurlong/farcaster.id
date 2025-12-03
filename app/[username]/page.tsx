@@ -72,7 +72,7 @@ export default async function Page({ searchParams, params }: Props) {
           </span>
           <span className="ml-2 text-sm absolute right-4 top-3">
             <a
-              href={`https://warpcast.com/${user.username}`}
+              href={`https://farcaster.xyz/${user.username}`}
               rel="noopener noreferer"
               target="_blank"
             >
@@ -231,7 +231,7 @@ export default async function Page({ searchParams, params }: Props) {
       </Card>
       <div className="flex justify-around sm:w-[400px] w-full items-center my-6">
         <a
-          href={`https://warpcast.com/${params.username}`}
+          href={`https://farcaster.xyz/${params.username}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -259,19 +259,6 @@ export default async function Page({ searchParams, params }: Props) {
               </clipPath>
             </defs>
           </svg>
-        </a>
-        <a
-          href={`https://www.super.sc/${params.username}`}
-          rel="noopener noreferer"
-          className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
-          target="_blank"
-        >
-          <Image
-            src="https://www.super.sc/supercast-logo-black.png"
-            width="32"
-            height="32"
-            alt="supercast"
-          />
         </a>
         {/* <a
             href={`https://www.herocast.xyz/${params.username}`}

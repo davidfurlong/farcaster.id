@@ -15,20 +15,21 @@ import { fromNow, numberWithCommas } from "@/lib/utils";
 export const revalidate = 3600; // revalidate at most every hour
 
 type Props = {
-  params: { channelid: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ channelid: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const channel = await fetchChannel(params.channelid);
+  const { channelid } = await params;
+  const channel = await fetchChannel(channelid);
 
   if (!channel) return {};
 
   return {
-    title: `${channel.name} (/${params.channelid}) on Farcaster`,
+    title: `${channel.name} (/${channelid}) on Farcaster`,
     description: channel.description,
     openGraph: {
       images: [channel.image_url],
@@ -53,9 +54,10 @@ async function fetchChannel(channelid: string) {
 }
 
 export default async function Page({ searchParams, params }: Props) {
-  if (!params.channelid) throw new Error("");
+  const { channelid } = await params;
+  if (!channelid) throw new Error("");
 
-  const channel = await fetchChannel(params.channelid);
+  const channel = await fetchChannel(channelid);
 
   if (!channel) return notFound();
 
@@ -84,14 +86,13 @@ export default async function Page({ searchParams, params }: Props) {
               }}
               sizes="(max-width: 768px) 128px, 128px"
               src={channel.image_url}
-              alt={params.channelid}
+              alt={channelid}
             />
           </div>
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
               <div className="font-bold text-xl">
-                {channel.name}{" "}
-                <span className="font-normal">/{params.channelid}</span>
+                {channel.name} <span className="font-normal">/{channelid}</span>
               </div>
             </h1>
             <div className="text-slate-500">
@@ -155,7 +156,7 @@ export default async function Page({ searchParams, params }: Props) {
       </Card>
       <div className="flex justify-around sm:w-[400px] w-full items-center my-6">
         <a
-          href={`https://warpcast.com/~/channel/${params.channelid}`}
+          href={`https://warpcast.com/~/channel/${channelid}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -183,9 +184,9 @@ export default async function Page({ searchParams, params }: Props) {
               </clipPath>
             </defs>
           </svg>
-        </a>  
+        </a>
         {/* <a
-            href={`https://www.herocast.xyz/${params.channelid}`}
+            href={`https://www.herocast.xyz/${channelid}`}
             rel="noopener noreferer"
             className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"

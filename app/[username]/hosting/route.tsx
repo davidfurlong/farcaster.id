@@ -11,9 +11,10 @@ const db = createKysely<DB>();
 
 export async function GET(
   req: Request,
-  { params: { username } }: { params: { username: string } }
+  { params }: { params: Promise<{ username: string }> }
 ) {
   try {
+    const { username } = await params;
     const channels = await sql<
       Channels[]
     >`SELECT * FROM channels d where jsonb_path_query_array(d.hosts, '$.username') ? ${username}`.execute(

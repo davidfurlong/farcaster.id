@@ -19,20 +19,21 @@ export const dynamic = "force-dynamic";
 export const revalidate = 3600; // revalidate at most every hour
 
 type Props = {
-  params: { username: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ username: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
 export async function generateMetadata(
   { params, searchParams }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const user = await fetchUser(params.username);
+  const { username } = await params;
+  const user = await fetchUser(username);
 
   if (!user) return {};
 
   return {
-    title: `${user.display_name} (@${params.username}) on Farcaster`,
+    title: `${user.display_name} (@${username}) on Farcaster`,
     description: user.profile.bio.text,
     openGraph: {
       images: [user.pfp_url],
@@ -57,9 +58,10 @@ async function fetchUser(username: string) {
 }
 
 export default async function Page({ searchParams, params }: Props) {
-  if (!params.username) return notFound();
+  const { username } = await params;
+  if (!username) return notFound();
 
-  const user = await fetchUser(params.username);
+  const user = await fetchUser(username);
 
   if (!user) return notFound();
 
@@ -88,7 +90,7 @@ export default async function Page({ searchParams, params }: Props) {
                   <DialogDescription>
                     <div className="flex flex-col gap-3 sm:w-[400px] w-full my-6">
                       <a
-                        href={`https://warpcast.com/${params.username}`}
+                        href={`https://warpcast.com/${username}`}
                         rel="noopener noreferer"
                         className="hover:scale-110 hover:animate-in flex flex-col gap-2"
                         target="_blank"
@@ -123,7 +125,7 @@ export default async function Page({ searchParams, params }: Props) {
                         Warpcast
                       </a>
                       <a
-                        href={`https://www.supercast.xyz/${params.username}`}
+                        href={`https://www.supercast.xyz/${username}`}
                         rel="noopener noreferer"
                         className="hover:scale-110 hover:animate-in"
                         target="_blank"
@@ -206,14 +208,14 @@ export default async function Page({ searchParams, params }: Props) {
               }}
               sizes="(max-width: 768px) 128px, 128px"
               src={user.pfp_url}
-              alt={params.username}
+              alt={username}
             />
           </div>
           <div className="px-6 py-4 flex gap-2 flex-col">
             <h1 className="m-0 p-0 flex flex-row items-center justify-center gap-4">
               <div className="font-bold text-xl">
                 {user.display_name}{" "}
-                <span className="font-normal">@{params.username}</span>
+                <span className="font-normal">@{username}</span>
               </div>
             </h1>
             <div className="text-slate-500">
@@ -231,7 +233,7 @@ export default async function Page({ searchParams, params }: Props) {
       </Card>
       <div className="flex justify-around sm:w-[400px] w-full items-center my-6">
         <a
-          href={`https://farcaster.xyz/${params.username}`}
+          href={`https://farcaster.xyz/${username}`}
           rel="noopener noreferer"
           className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
           target="_blank"
@@ -261,7 +263,7 @@ export default async function Page({ searchParams, params }: Props) {
           </svg>
         </a>
         {/* <a
-            href={`https://www.herocast.xyz/${params.username}`}
+            href={`https://www.herocast.xyz/${username}`}
             rel="noopener noreferer"
             className="opacity-30 dark:opacity-70 grayscale hover:grayscale-0 hover:scale-110 hover:animate-in hover:opacity-100"
             target="_blank"
@@ -310,9 +312,9 @@ export default async function Page({ searchParams, params }: Props) {
               ></path>
             </g>
           </svg>
-        </a> 
+        </a>
       </div>
-      <PinnedFrames username={params.username} />
+      <PinnedFrames username={username} />
     </div>
   );
 }

@@ -28,6 +28,10 @@ export function Frame({ homeframeUrl }: { homeframeUrl: string }) {
     signerState: {
       hasSigner: farcasterSigner !== undefined,
       signer: farcasterSigner,
+      isLoadingSigner: false,
+      logout: () => {
+        // Handle logout if needed
+      },
       onSignerlessFramePress: () => {
         // Only run if `hasSigner` is set to `false`
         // This is a good place to throw an error or prompt the user to login
